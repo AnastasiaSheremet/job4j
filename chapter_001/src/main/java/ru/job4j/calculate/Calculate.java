@@ -6,13 +6,13 @@ package ru.job4j.calculate;
 *@since 2019.04.22
 *@version 1
 */
-public class Calculate{
+public class Calculate {
 
 	/**
 	* main method
 	*@param args
 	*/
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		System.out.println("Hello world");
 	}
 
