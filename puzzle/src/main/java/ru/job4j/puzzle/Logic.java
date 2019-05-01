@@ -86,11 +86,11 @@ public class Logic {
                 if (table[j][i] == 1) {
                     cellCount++;
                 }
-                //if the ammount of 1 in horisontal or vertical row is equal to table.length => result true, quit the loop.
-                if ((rowCount == size) || (cellCount == size)) {
-                    result = true;
-                    break;
-                }
+            }
+            //if the ammount of 1 in horisontal or vertical row is equal to table.length => result true, quit the loop.
+            if ((rowCount == size) || (cellCount == size)) {
+                result = true;
+                break;
             }
             //Counters should be zeroed after every finishing of internal loop.
             rowCount = 0;
