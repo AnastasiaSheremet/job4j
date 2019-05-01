@@ -66,25 +66,33 @@ public class Logic {
         return rst;
     }
 
+    /**
+     * Method defines whether the game is won or lose.
+     * @return result: true or false.
+     */
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
         int size = table.length;
-        int rowCount = 0;
-        int cellCount = 0;
+        int rowCount = 0; //counter of 1 in the horisontal row
+        int cellCount = 0; //counter of 1 in the vertical row
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
+                //if there are found 1 in the row, rowCount should be increased by 1
                 if (table[i][j] == 1) {
                     rowCount++;
                 }
+                //if there are found 1 in the vertical, cellCount should be increased by 1
                 if (table[j][i] == 1) {
                     cellCount++;
                 }
+                //if the ammount of 1 in horisontal or vertical row is equal to table.length => result true, quit the loop.
                 if ((rowCount == size) || (cellCount == size)) {
                     result = true;
                     break;
                 }
             }
+            //Counters should be zeroed after every finishing of internal loop.
             rowCount = 0;
             cellCount = 0;
         }
