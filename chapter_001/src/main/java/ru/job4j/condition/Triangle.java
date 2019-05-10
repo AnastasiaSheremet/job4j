@@ -6,6 +6,15 @@ package ru.job4j.condition;
  * @since 0.1
  */
 public class Triangle {
+    private Point first;
+    private Point second;
+    private Point third;
+
+    public Triangle(Point first, Point second, Point third) {
+        this.first = first;
+        this.second = second;
+        this.third = third;
+    }
 
     /**
      * The method of calculating the perimeter by the length of the sides.
@@ -14,9 +23,9 @@ public class Triangle {
      *
      * (a + b + c) / 2
      *
-     * @param a distance between a and b
-     * @param b distance between a and c
-     * @param c distance between b and c
+     * @param a distance between first and second
+     * @param b distance between first and third
+     * @param c distance between second and third
      * @return perimeter.
      */
     public double period(double a, double b, double c) {
@@ -34,11 +43,11 @@ public class Triangle {
      *
      * @return If the treangle exists Return treangle area, else return -1.
      */
-    public double area(int x1, int y1, int x2, int y2, int x3, int y3) {
+    public double area() {
         double rsl = -1;
-        double a = new Point().distance(x1, y1, x2, y2);
-        double b = new Point().distance(x2, y2, x3, y3);
-        double c = new Point().distance(x1, y1, x3, y3);
+        double a = first.distance(second);
+        double b = first.distance(third);
+        double c = second.distance(third);
         double p = period(a, b, c);
         if (this.exist(a, b, c)) {
             // Write the formula for treangle area.
@@ -50,9 +59,9 @@ public class Triangle {
     /**
      * The method checks whether it is possible to construct a triangle with such lengths of the sides.
 
-     * @param a Distance between a and b.
-     * @param b Distance between a and c.
-     * @param c Distance between b and c.
+     * @param a Distance between first and second.
+     * @param b Distance between fist and third.
+     * @param c Distance between second and third.
      * @return true or false
      */
     private boolean exist(double a, double c, double b) {
