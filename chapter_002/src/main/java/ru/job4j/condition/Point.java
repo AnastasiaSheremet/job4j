@@ -4,9 +4,9 @@ package ru.job4j.condition;
  * Calculating distance between points.
  */
 public class Point {
-    private int x;
-    private int y;
-    private int z;
+    private Integer x;
+    private Integer y;
+    private Integer z;
 
     public Point(int first, int second) {
         this.x = first;
@@ -42,10 +42,10 @@ public class Point {
      * Method shows information about points.
      */
     public void info() {
-        System.out.println(String.format("Point[%s, %s]", this.x, this.y));
-    }
-
-    public void info3d() {
-        System.out.println(String.format("Point[%s, %s, %s]", this.x, this.y, this.z));
+        if (z  == null) {
+            System.out.println(String.format("Point[%s, %s]", this.x, this.y));
+        } else {
+            System.out.println(String.format("Point[%s, %s, %s]", this.x, this.y, this.z));
+        }
     }
 }

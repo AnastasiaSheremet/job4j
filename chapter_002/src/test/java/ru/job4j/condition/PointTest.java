@@ -29,8 +29,8 @@ public class PointTest {
         Point first = new Point(0, 0, 0);
         Point second = new Point(0, 10, 0);
         double result = first.distance3d(second);
-        first.info3d();
-        second.info3d();
+        first.info();
+        second.info();
         System.out.println(String.format("Result is %s", result));
         assertThat(result, is(10D));
     }
@@ -53,7 +53,7 @@ public class PointTest {
     public void whenShowInfo() {
         Point first = new Point(1, 1);
         first.info();
-        Point second = new Point(2, 2, 1);
-        second.info3d();
+        Point second = new Point(2, 2, 1 );
+        second.info();
     }
 }
