@@ -40,8 +40,8 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         boolean repl = false;
-        for (int i = 0; i < items.length; i++) {
-            if (this.findById(id) == items[i]) {
+        for (int i = 0; i < position; i++) {
+            if (items[i].getId().equals(id)) {
                 this.items[i] = item;
                 repl = true;
                 break;
@@ -57,11 +57,11 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean del = false;
-        for (int i = 0; i < items.length; i++) {
+        for (int i = 0; i < position; i++) {
             if (this.findById(id) == items[i]) {
-                for (int j = i; j < items.length - 1; j++) {
-                    items[j] = items[j + 1];
-                }
+                System.arraycopy(items, i + 1, items, i, position - i - 1);
+                System.out.println(position);
+                items[position - 1] = null;
                 del = true;
                 break;
             }
@@ -74,14 +74,7 @@ public class Tracker {
      * @return  Item[].
      */
     public Item[] findAll() {
-        int stop = 0;
-        for (int i = 0; i < items.length; i++) {
-            if ((items[i] == null) || (i == items.length - 1)) {
-                stop = i;
-                break;
-            }
-        }
-        return Arrays.copyOf(items, stop);
+        return Arrays.copyOf(items, position);
     }
 
     /**
@@ -92,7 +85,7 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] itemsNew = new Item[items.length];
         int pos = 0;
-        for (int i = 0; i < items.length; i++) {
+        for (int i = 0; i < position; i++) {
             if ((items[i] != null) && items[i].getName().equals(key)) {
                 itemsNew[pos++] = items[i];
             }
@@ -102,7 +95,7 @@ public class Tracker {
 
     public Item findById(String id) {
         Item item = null;
-        for (int i = 0; i < items.length; i++) {
+        for (int i = 0; i < position; i++) {
             if ((items[i] != null) && (items[i].getId().equals(id))) {
                 item = items[i];
                 break;
