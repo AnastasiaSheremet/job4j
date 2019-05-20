@@ -58,10 +58,10 @@ public class Tracker {
     public boolean delete(String id) {
         boolean del = false;
         for (int i = 0; i < position; i++) {
-            if (this.findById(id) == items[i]) {
+            if (this.findById(id).equals(items[i])) {
                 System.arraycopy(items, i + 1, items, i, position - i - 1);
-                System.out.println(position);
                 items[position - 1] = null;
+                position--;
                 del = true;
                 break;
             }
