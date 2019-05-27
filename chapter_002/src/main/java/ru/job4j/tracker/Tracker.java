@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class Tracker {
     private Item[] items = new Item[100];
-    private static int position = 0;
+    private int position = 0;
     private static final Random random = new Random();
 
     /**
@@ -28,7 +28,7 @@ public class Tracker {
      * @return id.
      */
     private String generateId() {
-        return String.valueOf(random.nextInt(100) + System.currentTimeMillis());
+        return String.valueOf(random.nextInt(100) + System.currentTimeMillis()/1000000);
     }
 
 
@@ -58,7 +58,7 @@ public class Tracker {
     public boolean delete(String id) {
         boolean del = false;
         for (int i = 0; i < position; i++) {
-            if (this.findById(id).equals(items[i])) {
+            if (id.equals(items[i].getId())) {
                 System.arraycopy(items, i + 1, items, i, position - i - 1);
                 items[position - 1] = null;
                 position--;
@@ -102,5 +102,13 @@ public class Tracker {
             }
         }
         return item;
+    }
+
+    @Override
+    public String toString() {
+        return "Tracker{" +
+                "items=" + Arrays.toString(items) +
+                ", position=" + position +
+                '}';
     }
 }
