@@ -28,7 +28,7 @@ public class Tracker {
      * @return id.
      */
     private String generateId() {
-        return String.valueOf(random.nextInt(100) + System.currentTimeMillis()/1000000);
+        return String.valueOf(random.nextInt(100) + System.currentTimeMillis());
     }
 
 

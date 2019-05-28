@@ -33,22 +33,19 @@ public class StartUI {
                      this.createItem();
                      break;
                  case (SHOW_ALL):
-                     System.out.println(Arrays.toString(tracker.findAll()));
+                     this.showAll();
                      break;
                  case (EDIT):
                      this.replaceItem();
                      break;
                  case (DELETE):
-                     inputId = this.input.ask("Input item id:");
-                     System.out.println(tracker.delete(inputId));
+                     this.dleteItem();
                      break;
                  case (FIND_BY_ID):
-                     inputId = this.input.ask("Input item id:");
-                     System.out.println(tracker.findById(inputId));
+                     this.findItemById();
                      break;
                  case (FIND_BY_NAME):
-                     String inputName = this.input.ask("Input item name:");
-                     System.out.println(Arrays.toString(tracker.findByName(inputName)));
+                     this.findItemByName();
                      break;
                  case (EXIT):
                      exit = true;
@@ -78,6 +75,25 @@ public class StartUI {
         item.setId(id);
         tracker.replace(id, item);
         }
+
+    private void  showAll() {
+            System.out.println(Arrays.toString(tracker.findAll()));
+        }
+
+    private void dleteItem() {
+        String inputId = this.input.ask("Input item id:");
+        System.out.println(tracker.delete(inputId));
+    }
+
+    private void findItemById() {
+        String inputId = this.input.ask("Input item id:");
+        System.out.println(tracker.findById(inputId));
+    }
+
+    private void findItemByName() {
+        String inputName = this.input.ask("Input item name:");
+        System.out.println(Arrays.toString(tracker.findByName(inputName)));
+    }
 
     private void showMenu() {
         System.out.println("Menu.");
