@@ -10,7 +10,7 @@ public class Builder extends Engineer {
         super(name, surname, education, birthday, project);
     }
 
-    public Building build(Project project){
+    public Building build(Project project) {
         return new Building();
     }
 }

@@ -10,7 +10,7 @@ import java.util.Random;
 public class Tracker {
     private Item[] items = new Item[100];
     private int position = 0;
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
     /**
      * This method adds items.
@@ -28,7 +28,7 @@ public class Tracker {
      * @return id.
      */
     private String generateId() {
-        return String.valueOf(random.nextInt(100) + System.currentTimeMillis());
+        return String.valueOf(RANDOM.nextInt(100) + System.currentTimeMillis());
     }
 
 
@@ -106,9 +106,8 @@ public class Tracker {
 
     @Override
     public String toString() {
-        return "Tracker{" +
-                "items=" + Arrays.toString(items) +
-                ", position=" + position +
-                '}';
+        return "Tracker{"
+                + "items=" + Arrays.toString(items)
+                + ", position=" + position + '}';
     }
 }

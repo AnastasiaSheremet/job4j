@@ -14,7 +14,11 @@ public class Dentist extends Doctor {
         return this.tooth;
     }
 
-    public void treatTooth() {}
+    public void treatTooth() {
 
-    public void deleteTooth() {}
+    }
+
+    public void deleteTooth() {
+
+    }
 }

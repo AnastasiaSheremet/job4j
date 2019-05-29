@@ -53,7 +53,7 @@ public class PointTest {
     public void whenShowInfo() {
         Point first = new Point(1, 1);
         first.info();
-        Point second = new Point(2, 2, 1 );
+        Point second = new Point(2, 2, 1);
         second.info();
     }
 }
