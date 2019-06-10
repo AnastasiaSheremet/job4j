@@ -9,8 +9,8 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class PaintTest {
-    PrintStream stdout = System.out;
-    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private PrintStream stdout = System.out;
+    private ByteArrayOutputStream out = new ByteArrayOutputStream();
 
     @Before
     public void loadOutput() {
@@ -31,11 +31,10 @@ public class PaintTest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
+                                .append("****").append(System.lineSeparator())
+                                .append("****").append(System.lineSeparator())
+                                .append("****").append(System.lineSeparator())
                                 .append("****")
-                                .append("****")
-                                .append("****")
-                                .append("****")
-                                .append(System.lineSeparator())
                                 .toString()
                 )
         );
@@ -48,11 +47,10 @@ public class PaintTest {
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append("*")
-                                .append("**")
-                                .append("***")
+                                .append("*").append(System.lineSeparator())
+                                .append("**").append(System.lineSeparator())
+                                .append("***").append(System.lineSeparator())
                                 .append("****")
-                                .append(System.lineSeparator())
                                 .toString()
                 )
         );
