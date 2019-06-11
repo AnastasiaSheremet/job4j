@@ -36,15 +36,15 @@ public class StartUITest {
 
     private String getMenu() {
         StringBuilder menu = new StringBuilder();
-        menu.append("Menu.");
-        menu.append("    0 - Add new item.");
-        menu.append("    1 - Show all items.");
-        menu.append("    2 - Edit item.");
-        menu.append("    3 - Delete item.");
-        menu.append("    4 - Find item by Id.");
-        menu.append("    5 - Find items by name.");
-        menu.append("    6 - Exit program.");
-        menu.append("Select a menu item :");
+        menu.append("Menu.").append(System.lineSeparator());
+        menu.append("    0 - Add new item.").append(System.lineSeparator());
+        menu.append("    1 - Show all items.").append(System.lineSeparator());
+        menu.append("    2 - Edit item.").append(System.lineSeparator());
+        menu.append("    3 - Delete item.").append(System.lineSeparator());
+        menu.append("    4 - Find item by Id.").append(System.lineSeparator());
+        menu.append("    5 - Find items by name.").append(System.lineSeparator());
+        menu.append("    6 - Exit program.").append(System.lineSeparator());
+//        menu.append("Select a menu item :").append(System.lineSeparator());
         return menu.toString();
     }
 
@@ -83,10 +83,10 @@ public class StartUITest {
     @Test
     public void whenShowAll() {
         Item item = tracker.add(new Item("test name", "desc"));
-        Input input = new StubInput(new String[]{"3", "6"});
+        Input input = new StubInput(new String[]{"1", "6"});
         StringBuilder expected = new StringBuilder();
         expected.append(this.getMenu())
-                .append(String.format("[Item{id='%s', name='test name', desc='desc', time=0}]", item.getId()))
+                .append(String.format("[Item{id='%s', name='test name', desc='desc', time=0}]", item.getId())).append(System.lineSeparator())
                 .append(this.getMenu());
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(expected.toString()));
@@ -94,11 +94,38 @@ public class StartUITest {
 
     @Test
     public void whenShowAllWithNothing() {
-        Item item = tracker.add(new Item("test name", "desc"));
-        Input input = new StubInput(new String[]{"3", "6"});
+        Input input = new StubInput(new String[]{"1", "6"});
         StringBuilder expected = new StringBuilder();
         expected.append(this.getMenu())
-                .append("[]")
+                .append("[]").append(System.lineSeparator())
+                .append(this.getMenu());
+        new StartUI(input, tracker).init();
+        assertThat(new String(out.toByteArray()), is(expected.toString()));
+    }
+
+    @Test
+    public void whenFindByName() {
+        Item item = tracker.add(new Item("test name", "desc"));
+        Item item1 = tracker.add(new Item("test name 1", "desc1"));
+        Item item2 = tracker.add(new Item("test name 2", "desc2"));
+        Input input = new StubInput(new String[]{"5", "test name 1", "6"});
+        StringBuilder expected = new StringBuilder();
+        expected.append(this.getMenu())
+                .append(String.format("[Item{id='%s', name='test name 1', desc='desc1', time=0}]", item1.getId())).append(System.lineSeparator())
+                .append(this.getMenu());
+        new StartUI(input, tracker).init();
+        assertThat(new String(out.toByteArray()), is(expected.toString()));
+    }
+
+    @Test
+    public void whenFindById() {
+        Item item = tracker.add(new Item("test name", "desc"));
+        Item item1 = tracker.add(new Item("test name 1", "desc1"));
+        Item item2 = tracker.add(new Item("test name 2", "desc2"));
+        Input input = new StubInput(new String[]{"4", item1.getId(), "6"});
+        StringBuilder expected = new StringBuilder();
+        expected.append(this.getMenu())
+                .append(String.format("Item{id='%s', name='test name 1', desc='desc1', time=0}", item1.getId())).append(System.lineSeparator())
                 .append(this.getMenu());
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()), is(expected.toString()));
