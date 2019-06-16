@@ -14,7 +14,11 @@ public class ReplaceItem implements UserAction {
         String desc = input.ask("Input item description :");
         Item item = new Item(name, desc);
         item.setId(id);
-        tracker.replace(id, item);
+        if (tracker.replace(id, item)) {
+            System.out.println("Item has been replaced");
+        }else {
+            System.out.println("Not done");
+        }
     }
 
     @Override

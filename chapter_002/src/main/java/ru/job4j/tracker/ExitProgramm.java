@@ -8,7 +8,6 @@ public class ExitProgramm implements UserAction {
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        System.exit(0);
     }
 
     @Override

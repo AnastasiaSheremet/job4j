@@ -9,7 +9,11 @@ public class FindItemById implements UserAction {
     @Override
     public void execute(Input input, Tracker tracker) {
         String inputId = input.ask("Input item id:");
-        System.out.println(tracker.findById(inputId));
+        if (tracker.findById(inputId) != null) {
+            System.out.println(tracker.findById(inputId));
+        }else {
+            System.out.println("Nothing");
+        }
     }
 
     @Override

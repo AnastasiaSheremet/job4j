@@ -14,9 +14,7 @@ public class AddItem implements UserAction {
         String desc = input.ask("Input item description :");
         Item item = new Item(name, desc);
         tracker.add(item);
-        System.out.println("------------ New Item with Id : " + item.getId());
-        System.out.println("------------ New Item with Name : " + item.getName());
-        System.out.println("------------ New Item with Description : " + item.getDesc());
+        System.out.println(item);
     }
 
     @Override

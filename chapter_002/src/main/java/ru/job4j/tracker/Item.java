@@ -72,7 +72,6 @@ public class Item {
                 + "id='" + id + '\''
                 + ", name='" + name + '\''
                 + ", desc='" + desc + '\''
-                + ", time=" + time
                 + '}';
     }
 }
