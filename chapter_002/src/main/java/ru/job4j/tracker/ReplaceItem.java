@@ -8,15 +8,15 @@ public class ReplaceItem implements UserAction {
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        String id = input.ask("Input id:");
+        String id = input.askStr("Input id:");
         System.out.println("------------ Create new item --------------");
-        String name = input.ask("Input item name :");
-        String desc = input.ask("Input item description :");
+        String name = input.askStr("Input item name :");
+        String desc = input.askStr("Input item description :");
         Item item = new Item(name, desc);
         item.setId(id);
         if (tracker.replace(id, item)) {
             System.out.println("Item has been replaced");
-        }else {
+        } else {
             System.out.println("Not done");
         }
     }

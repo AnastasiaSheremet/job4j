@@ -11,13 +11,13 @@ public class FindItemByName implements UserAction {
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        String inputName = input.ask("Input item name:");
+        String inputName = input.askStr("Input item name:");
         Item[] newItems = tracker.findByName(inputName);
         if (newItems != null) {
             for (Item item : newItems) {
                 System.out.println(item);
             }
-        }else {
+        } else {
             System.out.println("Nothing");
         }
         //System.out.println(Arrays.toString(tracker.findByName(inputName)));

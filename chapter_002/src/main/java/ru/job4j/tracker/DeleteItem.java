@@ -10,10 +10,10 @@ public class DeleteItem implements UserAction {
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        String inputId = input.ask("Input item id:");
+        String inputId = input.askStr("Input item id:");
         if (tracker.delete(inputId)) {
             System.out.println("Item has been deleted.");
-        }else {
+        } else {
             System.out.println("Item has not been deleted.");
         }
     }

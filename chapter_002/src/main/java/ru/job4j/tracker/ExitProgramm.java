@@ -14,6 +14,4 @@ public class ExitProgramm implements UserAction {
     public String info() {
         return String.format("%s. %s", this.key(), "Exit Program.");
     }
-
-
 }

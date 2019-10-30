@@ -21,7 +21,7 @@ public class MenuTracker {
         return this.actions.size();
     }
 
-    /**
+     /**
      * Method fills array.
      */
     public  void fillActions() {
@@ -46,12 +46,10 @@ public class MenuTracker {
      * Method displays menu.
      */
     public void show() {
-        for (UserAction action : actions){
-            if (action != null){
+        for (UserAction action : actions) {
+            if (action != null) {
                 System.out.println(action.info());
             }
         }
     }
-
-
 }
