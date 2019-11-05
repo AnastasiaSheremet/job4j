@@ -43,10 +43,8 @@ public class PaintTest {
     @Test
     public void whenDrawTriangle() {
         new Paint().draw(new Triangle());
-        assertThat(
-                new String(out.toByteArray()),
-                is(
-                        new StringBuilder()
+        assertThat(new String(out.toByteArray()),
+                is(new StringBuilder()
                                 .append("*").append(System.lineSeparator())
                                 .append("**").append(System.lineSeparator())
                                 .append("***").append(System.lineSeparator())

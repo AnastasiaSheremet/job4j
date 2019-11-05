@@ -2,7 +2,12 @@ package ru.job4j.tracker;
 
 import java.util.NoSuchElementException;
 
-public class ValidateInput extends ConsoleInput {
+public class ValidateInput implements Input {
+    private final Input input;
+
+    public ValidateInput(Input input) {
+        this.input = input;
+    }
 
     @Override
     public int askInt(String question, int max) {
@@ -10,7 +15,7 @@ public class ValidateInput extends ConsoleInput {
         int value = -1;
         do {
             try {
-                value = super.askInt(question, max);
+                value = input.askInt(question, max);
                 invalid = false;
             } catch (IllegalStateException moe) {
                 System.out.println("Please select key from menu ");
@@ -27,12 +32,17 @@ public class ValidateInput extends ConsoleInput {
         int value = -1;
         do {
             try {
-                value = super.askInt(question);
+                value = input.askInt(question);
                 invalid = false;
             } catch (NumberFormatException nfe) {
                 System.out.println("Please enter validate data again ");
             }
         } while (invalid);
         return value;
+    }
+
+    @Override
+    public String askStr(String question) {
+        return input.askStr(question);
     }
 }
