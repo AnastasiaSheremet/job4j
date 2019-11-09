@@ -2,11 +2,10 @@ package ru.job4j.tracker;
 
 import java.util.Arrays;
 
-public class FindItemByName implements UserAction {
+public class FindItemByName extends BaseAction {
 
-    @Override
-    public int key() {
-        return 5;
+    public FindItemByName(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -21,10 +20,5 @@ public class FindItemByName implements UserAction {
             System.out.println("Nothing");
         }
         //System.out.println(Arrays.toString(tracker.findByName(inputName)));
-    }
-
-    @Override
-    public String info() {
-        return String.format("%s. %s", this.key(), "Find items by name.");
     }
 }

@@ -1,11 +1,9 @@
 package ru.job4j.tracker;
 
-import java.sql.SQLOutput;
+public class DeleteItem extends BaseAction {
 
-public class DeleteItem implements UserAction {
-    @Override
-    public int key() {
-        return 3;
+    public DeleteItem(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -16,10 +14,5 @@ public class DeleteItem implements UserAction {
         } else {
             System.out.println("Item has not been deleted.");
         }
-    }
-
-    @Override
-    public String info() {
-        return String.format("%s. %s", this.key(), "Delete item.");
     }
 }

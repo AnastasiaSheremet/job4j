@@ -25,13 +25,13 @@ public class MenuTracker {
      * Method fills array.
      */
     public  void fillActions() {
-        this.actions.add(new AddItem());
-        this.actions.add(new ShowAll());
-        this.actions.add(new ReplaceItem());
-        this.actions.add(new DeleteItem());
-        this.actions.add(new FindItemById());
-        this.actions.add(new FindItemByName());
-        this.actions.add(new ExitProgramm());
+        this.actions.add(new AddItem(0, "Add Item"));
+        this.actions.add(new ShowAll(1, "Show All"));
+        this.actions.add(new ReplaceItem(2, "Replace Item"));
+        this.actions.add(new DeleteItem(3, "Delete Item"));
+        this.actions.add(new FindItemById(4, "Find Item by Id"));
+        this.actions.add(new FindItemByName(5, "Find Item by Name"));
+        this.actions.add(new ExitProgramm(6, "Exit Programm"));
     }
 
     /**

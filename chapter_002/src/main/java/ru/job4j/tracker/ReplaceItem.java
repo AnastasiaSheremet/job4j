@@ -1,9 +1,9 @@
 package ru.job4j.tracker;
 
-public class ReplaceItem implements UserAction {
-    @Override
-    public int key() {
-        return 2;
+public class ReplaceItem extends BaseAction {
+
+    public ReplaceItem(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -19,10 +19,5 @@ public class ReplaceItem implements UserAction {
         } else {
             System.out.println("Not done");
         }
-    }
-
-    @Override
-    public String info() {
-        return String.format("%s. %s", this.key(), "Edit item.");
     }
 }
