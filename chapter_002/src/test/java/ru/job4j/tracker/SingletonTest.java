@@ -10,27 +10,31 @@ public class SingletonTest {
     public void enumEagerLoadingTest() {
         EnumEagerLoading first = EnumEagerLoading.INSTANCE;
         EnumEagerLoading second = EnumEagerLoading.INSTANCE;
-        assertThat(first.toString(), is(second.toString()));
+        boolean compare = first == second;
+        assertThat(compare, is(true));
     }
 
     @Test
     public void staticFieldLazyTest() {
         StaticFieldLazy first = StaticFieldLazy.getInstance();
         StaticFieldLazy second = StaticFieldLazy.getInstance();
-        assertThat(first.toString(), is(second.toString()));
+        boolean compare = first == second;
+        assertThat(compare, is(true));
     }
 
     @Test
     public void finalFieldEagerTest() {
         FinalFieldEager first = FinalFieldEager.getInstance();
         FinalFieldEager second = FinalFieldEager.getInstance();
-        assertThat(first.toString(), is(second.toString()));
+        boolean compare = first == second;
+        assertThat(compare, is(true));
     }
 
     @Test
     public void staticFinalClassLazyTest() {
         StaticFinalClassLazy first = StaticFinalClassLazy.getInstance();
         StaticFinalClassLazy second = StaticFinalClassLazy.getInstance();
-        assertThat(first.toString(), is(second.toString()));
+        boolean compare = first == second;
+        assertThat(compare, is(true));
     }
 }
