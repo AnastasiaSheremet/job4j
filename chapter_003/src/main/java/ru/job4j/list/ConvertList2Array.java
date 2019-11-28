@@ -5,7 +5,6 @@ import java.util.List;
 
 public class ConvertList2Array {
     public List<Integer> list = new ArrayList<>();
-    public List<Integer> result = new ArrayList<>();
 
     public List<Integer> fillList() {
         for (Integer index = 0; index <= 7; index++) {
@@ -36,7 +35,7 @@ public class ConvertList2Array {
     }
 
     public List<Integer> convert(List<int[]> list) {
-
+        List<Integer> result = new ArrayList<>();
         for (int[] array : list) {
             for (Integer i = 0; i < array.length; i++) {
                 result.add(i);
