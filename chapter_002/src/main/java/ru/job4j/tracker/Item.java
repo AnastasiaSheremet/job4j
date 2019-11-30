@@ -11,7 +11,6 @@ public class Item {
     public Item(String name, String desc) {
         this.name = name;
         this.desc = desc;
-//        this.time = time;
     }
 
     public String getId() {

@@ -1,6 +1,8 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -8,8 +10,8 @@ import java.util.Random;
  * @since 0.1
  */
 public class Tracker {
-    private Item[] items = new Item[100];
-    private int position = 0;
+    private List<Item> items = new ArrayList<>();
+//    private int position = 0;
     private static final Random RANDOM = new Random();
 
     /**
@@ -19,7 +21,7 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        items[position++] = item;
+        items.add(item);
         return item;
     }
 
@@ -40,9 +42,11 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         boolean repl = false;
-        for (int i = 0; i < position; i++) {
-            if (items[i].getId().equals(id)) {
-                this.items[i] = item;
+        for (Item i : items) {
+            if (i.getId().equals(id)) {
+                int index = items.indexOf(i);
+                items.add(index, item);
+                items.remove(i);
                 repl = true;
                 break;
             }
@@ -57,11 +61,9 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean del = false;
-        for (int i = 0; i < position; i++) {
-            if (id.equals(items[i].getId())) {
-                System.arraycopy(items, i + 1, items, i, position - i - 1);
-                items[position - 1] = null;
-                position--;
+        for (Item i : items) {
+            if (id.equals(i.getId())) {
+                items.remove(i);
                 del = true;
                 break;
             }
@@ -73,8 +75,8 @@ public class Tracker {
      * This method fins all items.
      * @return  Item[].
      */
-    public Item[] findAll() {
-        return Arrays.copyOf(items, position);
+    public List<Item> findAll() {
+        return this.items;
     }
 
     /**
@@ -82,22 +84,21 @@ public class Tracker {
      * @param key item key.
      * @return Item[];
      */
-    public Item[] findByName(String key) {
-        Item[] itemsNew = new Item[items.length];
-        int pos = 0;
-        for (int i = 0; i < position; i++) {
-            if ((items[i] != null) && items[i].getName().equals(key)) {
-                itemsNew[pos++] = items[i];
+    public List<Item> findByName(String key) {
+        List<Item> itemsNew = new ArrayList<>();
+        for (Item i : items) {
+            if ((i != null) && i.getName().equals(key)) {
+                itemsNew.add(i);
             }
         }
-        return Arrays.copyOf(itemsNew, pos);
+        return itemsNew;
     }
 
     public Item findById(String id) {
         Item item = null;
-        for (int i = 0; i < position; i++) {
-            if ((items[i] != null) && (items[i].getId().equals(id))) {
-                item = items[i];
+        for (Item i : items) {
+            if ((i != null) && (i.getId().equals(id))) {
+                item = i;
                 break;
             }
         }
@@ -107,7 +108,7 @@ public class Tracker {
     @Override
     public String toString() {
         return "Tracker{"
-                + "items=" + Arrays.toString(items)
-                + ", position=" + position + '}';
+                + "items=" + items
+                + '}';
     }
 }

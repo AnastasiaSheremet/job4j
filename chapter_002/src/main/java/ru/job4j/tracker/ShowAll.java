@@ -10,6 +10,6 @@ public class ShowAll extends BaseAction {
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        System.out.println(Arrays.toString(tracker.findAll()));
+        System.out.println(tracker.findAll());
     }
 }
