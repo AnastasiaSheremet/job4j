@@ -45,8 +45,7 @@ public class Tracker {
         for (Item i : items) {
             if (i.getId().equals(id)) {
                 int index = items.indexOf(i);
-                items.add(index, item);
-                items.remove(i);
+                items.set(index, item);
                 repl = true;
                 break;
             }
@@ -61,13 +60,15 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean del = false;
+        int index = 0;
         for (Item i : items) {
             if (id.equals(i.getId())) {
-                items.remove(i);
-                del = true;
+                index = items.indexOf(i);
                 break;
             }
         }
+        items.remove(index);
+        del = true;
         return del;
     }
 
