@@ -35,7 +35,7 @@ public class ListCompareTest {
                 "Petrov",
                 "Ivanova"
         );
-        assertThat(rst, greaterThan(0));
+        assertThat(rst, lessThan(0));
     }
 
     @Test
@@ -55,6 +55,6 @@ public class ListCompareTest {
                 "Patrova",
                 "Petrov"
         );
-        assertThat(rst, lessThan(0));
+        assertThat(rst, greaterThan(0));
     }
 }
