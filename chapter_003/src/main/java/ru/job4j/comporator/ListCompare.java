@@ -7,14 +7,13 @@ public class ListCompare implements Comparator<String> {
     public int compare(String o1, String o2) {
         int result = 0;
         int compareLength = Integer.compare(o1.length(), o2.length());
-        if (compareLength == 0) {
-            for (int i = 0; i < o1.length(); i++) {
-                result = Character.compare(o1.charAt(i), o2.charAt(i));
-                if (result != 0) {
-                    break;
-                }
+        for (int i = 0; i < (compareLength > 0 ? o2.length() : o1.length()); i++) {
+           result = Character.compare(o1.charAt(i), o2.charAt(i));
+            if (result != 0) {
+                break;
             }
-        } else {
+        }
+        if (result == 0 && compareLength != 0) {
             result = compareLength;
         }
         return result;
