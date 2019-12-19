@@ -15,36 +15,33 @@ public class Bank {
     }
 
     public void addAccountToUser(String passport, Account account) {
-        Set<User> keys = this.users.keySet();
-        for (User user : keys) {
-            if (user.getPassport().equals(passport)) {
-                List<Account> newAccounts = this.users.get(user);
-                newAccounts.add(account);
-                this.users.replace(user, newAccounts);
-            }
-        }
+        User user = getUserByPassport(passport);
+        List<Account> newAccounts = getUserAccounts(passport);
+        newAccounts.add(account);
+        this.users.replace(user, newAccounts);
     }
 
     public void deleteAccountFromUser(String passport, Account account) {
-        Set<User> keys = this.users.keySet();
-        for (User user : keys) {
-            if (user.getPassport().equals(passport)) {
-                List<Account> newAccounts = this.users.get(user);
-                newAccounts.remove(account);
-                this.users.replace(user, newAccounts);
-            }
-        }
+        List<Account> newAccounts = getUserAccounts(passport);
+        newAccounts.remove(account);
+        this.users.replace(getUserByPassport(passport), newAccounts);
     }
 
     public List<Account> getUserAccounts(String passport) {
-        List<Account> userAccounts = new ArrayList<>();
+        User user = getUserByPassport(passport);
+        return this.users.get(user);
+    }
+
+    public User getUserByPassport(String passport) {
+        User user = new User();
         Set<User> keys = this.users.keySet();
-        for (User user : keys) {
-            if (user.getPassport().equals(passport)) {
-                userAccounts = this.users.get(user);
+        for (User u : keys) {
+            if (u.getPassport().equals(passport)) {
+                user = u;
+                break;
             }
         }
-        return userAccounts;
+        return user;
     }
 
     public Account getOneAccount(String passport, String requisites) {
@@ -62,12 +59,6 @@ public class Bank {
     public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport, String dstRequisite, double amount) {
         Account src = getOneAccount(srcPassport, srcRequisite);
         Account dest = getOneAccount(destPassport, dstRequisite);
-        if (src.getValue() - amount >= 0) {
-            dest.setValue(dest.getValue() + amount);
-            src.setValue(src.getValue() - amount);
-            return true;
-        } else {
-            return false;
-        }
+        return src.transfer(src, dest, amount);
     }
 }

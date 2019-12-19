@@ -15,6 +15,18 @@ public class Account {
         this.requisites = requisites;
     }
 
+    public boolean transfer(Account sourse, Account destination, double amount) {
+        boolean valid = false;
+        if (sourse != null && destination != null) {
+            if (sourse.value - amount >= 0) {
+                sourse.value -= amount;
+                destination.value += amount;
+                valid = true;
+            }
+        }
+    return valid;
+    }
+
     public double getValue() {
         return value;
     }
