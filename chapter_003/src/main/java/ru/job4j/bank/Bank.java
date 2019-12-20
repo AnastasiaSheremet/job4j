@@ -46,7 +46,7 @@ public class Bank {
 
     public Account getOneAccount(String passport, String requisites) {
         List<Account> accounts = getUserAccounts(passport);
-        Account account = new Account();
+        Account account = null;
         for (Account a : accounts) {
             if (a.getRequisites().equals(requisites)) {
                 account = a;
