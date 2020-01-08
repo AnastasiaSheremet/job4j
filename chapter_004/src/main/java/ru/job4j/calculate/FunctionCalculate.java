@@ -13,16 +13,4 @@ public class FunctionCalculate {
         }
         return result;
     }
-
-    public List<Double> calcLine(int start, int end, double n, double c) {
-        return calcRange(start, end, x -> n * x + c);
-    }
-
-    public List<Double> calcSqr(int start, int end) {
-        return calcRange(start, end, x -> Math.pow(x, 2));
-    }
-
-    public List<Double> calcLog(int start, int end) {
-        return calcRange(start, end, x -> Math.log(x));
-    }
 }
