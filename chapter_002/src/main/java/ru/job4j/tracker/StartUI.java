@@ -3,6 +3,7 @@ package ru.job4j.tracker;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * @version $Id$
@@ -18,14 +19,16 @@ public class StartUI {
     private static final String EXIT = "6";
     private final Tracker tracker;
     private final Input input;
+    private final Consumer<String> output;
 
-    public StartUI(Input input, Tracker tracker) {
+    public StartUI(Input input, Tracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
+        this.output = output;
     }
 
     public void init() {
-        MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        MenuTracker menu = new MenuTracker(this.input, this.tracker, output);
         List<Integer> range = new ArrayList<>();
         menu.fillActions();
         for (int i = 0; i < menu.getActionsLength(); i++) {
@@ -38,6 +41,6 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker()).init();
+        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker(), output -> {}).init();
     }
 }
